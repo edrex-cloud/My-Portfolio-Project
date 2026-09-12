@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 215 32% 98%;
+    --foreground: 222 47% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 13%;
+
+    --primary: 187 82% 43%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 220 18% 96%;
+    --secondary-foreground: 222 30% 24%;
+
+    --muted: 220 18% 94%;
+    --muted-foreground: 220 15% 46%;
+
+    --accent: 220 18% 95%;
+    --accent-foreground: 222 47% 13%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 89%;
+    --input: 220 20% 89%;
+    --ring: 187 82% 43%;
+
+    --radius: 0.8rem;
+
+    --sidebar-background: 215 32% 98%;
+    --sidebar-foreground: 222 30% 24%;
+    --sidebar-primary: 187 82% 43%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 220 18% 95%;
+    --sidebar-accent-foreground: 222 30% 24%;
+    --sidebar-border: 220 20% 89%;
+    --sidebar-ring: 187 82% 43%;
+
+    /* Custom tokens */
+    --surface-elevated: 210 24% 99%;
+
+    /* Accent palette — richer and more premium */
+    --accent-teal: 187 82% 43%;
+    --accent-indigo: 247 74% 60%;
+    --accent-amber: 35 95% 58%;
+    --accent-rose: 340 82% 60%;
+    --accent-emerald: 152 68% 42%;
+    --accent-violet: 269 78% 64%;
+
+    --gradient-warm: linear-gradient(135deg, hsl(35 95% 58% / 0.18), hsl(340 82% 60% / 0.16));
+    --gradient-cool: linear-gradient(135deg, hsl(187 82% 43% / 0.18), hsl(247 74% 60% / 0.16));
+    --gradient-mesh: radial-gradient(circle at 20% 20%, hsl(187 82% 43% / 0.18), transparent 38%),
+                     radial-gradient(circle at 80% 30%, hsl(269 78% 64% / 0.14), transparent 40%),
+                     radial-gradient(circle at 50% 80%, hsl(35 95% 58% / 0.15), transparent 45%);
+  }
+
+  .dark {
+    --background: 224 40% 8%;
+    --foreground: 210 30% 96%;
+
+    --card: 220 25% 11%;
+    --card-foreground: 210 30% 96%;
+
+    --popover: 220 24% 10%;
+    --popover-foreground: 210 30% 96%;
+
+    --primary: 187 84% 48%;
+    --primary-foreground: 222 30% 10%;
+
+    --secondary: 220 24% 15%;
+    --secondary-foreground: 210 30% 92%;
+
+    --muted: 220 24% 14%;
+    --muted-foreground: 220 16% 70%;
+
+    --accent: 220 24% 16%;
+    --accent-foreground: 210 30% 96%;
+
+    --border: 220 22% 20%;
+    --input: 220 22% 20%;
+    --ring: 187 84% 48%;
+
+    --sidebar-background: 220 24% 9%;
+    --sidebar-foreground: 210 30% 92%;
+    --sidebar-primary: 187 84% 48%;
+    --sidebar-primary-foreground: 222 30% 10%;
+    --sidebar-accent: 220 24% 15%;
+    --sidebar-accent-foreground: 210 30% 92%;
+    --sidebar-border: 220 22% 20%;
+    --sidebar-ring: 187 84% 48%;
+
+    --surface-elevated: 220 24% 13%;
+
+    --gradient-mesh: radial-gradient(circle at 20% 20%, hsl(187 84% 48% / 0.22), transparent 37%),
+                     radial-gradient(circle at 80% 30%, hsl(269 78% 64% / 0.16), transparent 40%),
+                     radial-gradient(circle at 50% 80%, hsl(35 95% 58% / 0.16), transparent 46%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-image: radial-gradient(circle at top left, hsl(var(--accent-teal) / 0.08), transparent 28%),
+                      radial-gradient(circle at top right, hsl(var(--accent-violet) / 0.10), transparent 30%),
+                      linear-gradient(180deg, hsl(var(--background)), hsl(var(--background)));
+  }
+
+  ::selection {
+    background: hsl(var(--accent-teal) / 0.25);
+    color: hsl(var(--foreground));
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+
+  .font-serif-display {
+    font-family: 'Instrument Serif', Georgia, serif;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-gradient-dark {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(0, 0%, 9%), hsl(0, 0%, 35%));
+  }
+
+  .text-gradient-vibrant {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, hsl(var(--accent-teal)), hsl(var(--accent-indigo)) 42%, hsl(var(--accent-amber)) 100%);
+  }
+
+  .bg-mesh {
+    background-image: var(--gradient-mesh);
+  }
+
+  .ring-gradient {
+    background: linear-gradient(135deg, hsl(var(--accent-teal)), hsl(var(--accent-indigo)), hsl(var(--accent-amber)));
+  }
+
+  .section-padding {
+    @apply px-6 py-24 md:px-12 lg:px-24 xl:px-32;
+  }
+
+  .bg-dot-pattern {
+    background-image: radial-gradient(circle, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Premium icon tile — layered gradient + glossy sheen + soft glow */
+  .icon-tile {
+    @apply relative overflow-hidden rounded-xl flex items-center justify-center;
+    background:
+      linear-gradient(135deg, hsl(var(--icon-color) / 0.18), hsl(var(--icon-color) / 0.06) 60%, transparent),
+      linear-gradient(180deg, hsl(0 0% 100% / 0.6), hsl(0 0% 100% / 0));
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.7),
+      inset 0 -1px 0 hsl(var(--icon-color) / 0.15),
+      0 1px 2px hsl(var(--icon-color) / 0.10),
+      0 8px 24px -8px hsl(var(--icon-color) / 0.35);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  }
+  .icon-tile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 20%, hsl(0 0% 100% / 0.55), transparent 55%);
+    pointer-events: none;
+  }
+  .icon-tile::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -50%;
+    width: 60%;
+    height: 300%;
+    background: linear-gradient(115deg, transparent 35%, hsl(0 0% 100% / 0.55) 50%, transparent 65%);
+    transform: translateX(-120%) rotate(8deg);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+  .group:hover .icon-tile {
+    transform: translateY(-2px) scale(1.06);
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.85),
+      inset 0 -1px 0 hsl(var(--icon-color) / 0.25),
+      0 2px 4px hsl(var(--icon-color) / 0.18),
+      0 18px 40px -10px hsl(var(--icon-color) / 0.55);
+  }
+  .group:hover .icon-tile::after {
+    transform: translateX(220%) rotate(8deg);
+  }
+  .icon-tile > svg {
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 1px 1px hsl(var(--icon-color) / 0.35));
+  }
+
+  /* Soft pulsing aura behind icon tiles */
+  .icon-aura {
+    position: absolute;
+    inset: -8px;
+    border-radius: 1rem;
+    background: radial-gradient(circle, hsl(var(--icon-color) / 0.35), transparent 65%);
+    filter: blur(14px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+  .group:hover .icon-aura {
+    opacity: 0.9;
+    animation: aura-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes aura-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.12); opacity: 1; }
+  }
+
+  /* Tag chip with subtle gradient + hover lift */
+  .tag-chip {
+    @apply text-xs font-mono px-3 py-1.5 rounded-full text-secondary-foreground transition-all duration-300;
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent) / 0.96));
+    border: 1px solid hsl(var(--border));
+    box-shadow: inset 0 1px 0 hsl(var(--foreground) / 0.05);
+  }
+  .tag-chip:hover {
+    transform: translateY(-1px);
+    border-color: hsl(var(--accent-teal) / 0.35);
+    box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.25), 0 6px 16px -6px hsl(var(--accent-indigo) / 0.28);
+  }
+}
+
+/* Helper accent color binders — set --icon-color from a brand token */
+@layer utilities {
+  .accent-indigo  { --icon-color: var(--accent-indigo); }
+  .accent-teal    { --icon-color: var(--accent-teal); }
+  .accent-amber   { --icon-color: var(--accent-amber); }
+  .accent-rose    { --icon-color: var(--accent-rose); }
+  .accent-emerald { --icon-color: var(--accent-emerald); }
+  .accent-violet  { --icon-color: var(--accent-violet); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(0, 0%, 98%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(0, 0%, 75%);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(0, 0%, 40%);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
